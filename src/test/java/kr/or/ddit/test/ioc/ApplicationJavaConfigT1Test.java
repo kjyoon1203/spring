@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -15,6 +16,7 @@ import kr.or.ddit.user.dao.IUserDao;
 import kr.or.ddit.user.service.IUserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@ImportResource("classpath:kr/or/ddit/config/spring/context-datasource-test.xml")
 @ContextConfiguration(classes = ApplicationJavaConfigT1.class)
 public class ApplicationJavaConfigT1Test {
 

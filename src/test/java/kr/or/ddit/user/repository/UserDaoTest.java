@@ -9,22 +9,16 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import kr.or.ddit.common.model.Page;
+import kr.or.ddit.config.test.RootTestConfig;
 import kr.or.ddit.user.dao.IUserDao;
 import kr.or.ddit.user.model.User;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:kr/or/ddit/config/spring/context-root.xml",
-		"classpath:kr/or/ddit/config/spring/context-datasource.xml",
-		"classpath:kr/or/ddit/config/spring/context-transaction.xml" })
-public class UserDaoTest {
+public class UserDaoTest extends RootTestConfig {
 	// userDao를 테스트 하기 위해 필요한 파일
 	// db연결, 트랜잭션, Dao
 
@@ -33,11 +27,6 @@ public class UserDaoTest {
 
 	@Resource(name = "userDao")
 	private IUserDao userDao;
-
-	@Before
-	public void setup() {
-		userDao.deleteUser(userId);
-	}
 	
 	/**
 	 * Method : getUserListTest 
@@ -77,7 +66,6 @@ public class UserDaoTest {
 	}
 
 	/**
-	 * 
 	 * Method : getUserListHalf 
 	 * 작성자 : PC-08 
 	 * 변경이력 : 
@@ -95,28 +83,28 @@ public class UserDaoTest {
 	}
 
 	/**
-	 * 
 	 * Method : getUserPagingListTest 
 	 * 작성자 : PC-08 
 	 * 변경이력 : 
 	 * Method 설명 : 사용자 페이징 리스트 조회 테스트
 	 */
+	  @Test 
+	  public void getUserPagingListTest() {
+		/*** Given ***/
 
-	/*
-	 * @Test public void getUserPagingListTest() {
-	 *//*** Given ***/
-	/*
-	 * Page page = new Page(); page.setPage(3); page.setPagesize(10);
-	 * 
-	 *//*** When ***/
+		Page page = new Page();
+		page.setPage(1);
+		page.setPagesize(10);
 
-	/*
-	 * List<User> userList = userDao.getUserPagingList(page);
-	 * 
-	 *//*** Then ***//*
-						 * assertEquals(10, userList.size()); assertEquals("xuserid22",
-						 * userList.get(0).getUserId()); }
-						 */
+		/*** When ***/
+
+		List<User> userList = userDao.getUserPagingList(page);
+
+		/*** Then ***/
+		assertEquals(5, userList.size());
+		assertEquals("brown", userList.get(0).getUserId());
+	}
+						 
 
 	@Test
 	public void getUserTotalCntTest() {

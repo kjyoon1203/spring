@@ -10,31 +10,25 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.ddit.common.model.Page;
+import kr.or.ddit.config.test.RootTestConfig;
 import kr.or.ddit.user.model.User;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:kr/or/ddit/config/spring/context-root.xml",
-		"classpath:kr/or/ddit/config/spring/context-datasource.xml",
-		"classpath:kr/or/ddit/config/spring/context-transaction.xml" })
-public class UserServiceTest {
+public class UserServiceTest extends RootTestConfig{
 
 	private String userId = "brownTest";
-
-	@Before
-	public void setup() {
-		userService.deleteUser(userId);
-	}
-
+	
 	@Resource(name = "userService")
 	private IUserService userService;
-
+	
+	/**
+	 * Method : getUserListTest 
+	 * 작성자 : PC-08 
+	 * 변경이력 : 
+	 * Method 설명 : 사용자 전체 리스트 조회 테스트
+	 */
 	@Test
 	public void getUserListTest() {
 		/*** Given ***/
@@ -48,7 +42,10 @@ public class UserServiceTest {
 
 	/**
 	 * 
-	 * Method : getUserTest 작성자 : PC-08 변경이력 : Method 설명 : 사용자 정보 조회 테스트
+	 * Method : getUserTest 
+	 * 작성자 : PC-08 
+	 * 변경이력 : Method 
+	 * 설명 : 사용자 정보 조회 테스트
 	 */
 	@Test
 	public void getUserTest() {
@@ -64,7 +61,10 @@ public class UserServiceTest {
 
 	/**
 	 * 
-	 * Method : getUserListHalf 작성자 : PC-08 변경이력 : Method 설명 : getUserListHalf 테스트
+	 * Method : getUserListHalf 
+	 * 작성자 : PC-08 
+	 * 변경이력 : 
+	 * Method 설명 : getUserListHalf 테스트
 	 */
 	@Test
 	public void getUserListOnlyHalfTest() {
