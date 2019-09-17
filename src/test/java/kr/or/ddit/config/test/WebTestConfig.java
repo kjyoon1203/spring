@@ -1,5 +1,8 @@
 package kr.or.ddit.config.test;
 
+import javax.annotation.Resource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -13,10 +16,18 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:kr/or/ddit/config/spring/servlet-context.xml")	// controller scan: servlet-context.xml
+@ContextConfiguration(locations = { 
+	 "classpath:kr/or/ddit/config/spring/context-root.xml"
+	,"classpath:kr/or/ddit/config/spring/context-datasource-test.xml"
+	,"classpath:kr/or/ddit/config/spring/context-transaction.xml" 
+	,"classpath:kr/or/ddit/config/spring/servlet-context.xml"
+})	// controller scan: servlet-context.xml
 @WebAppConfiguration	// 스프링 컨테이너를 구성할 web기반 application context로 구성
 public class WebTestConfig {
 
+	@Resource(name="datasource")
+	private BasicDataSource datasource;
+	
 	// controller 테스트를 하기 위해 필요한 것 2가지
 	// applicationContext: 스프링 컨테이너
 	// MockMvc: dispatcherServlet(applicationContext객체를 통해 생성)

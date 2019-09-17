@@ -13,16 +13,21 @@ public class Page {
 	}
 	
 	public int getPage() {
-		return page;
+		return page == 0 ? 1 : page;
 	}
 	public void setPage(int page) {
 		this.page = page;
 	}
 	public int getPagesize() {
-		return pagesize;
+		return pagesize == 0 ? 10 : pagesize;
 	}
 	public void setPagesize(int pagesize) {
 		this.pagesize = pagesize;
 	}
 
+	@Override
+	public String toString() {
+		return "Page [page=" + page + ", pagesize=" + pagesize + "]";
+	}
+	
 }
