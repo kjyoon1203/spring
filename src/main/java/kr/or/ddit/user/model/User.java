@@ -2,12 +2,16 @@ package kr.or.ddit.user.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 
 public class User {
 	private String userId;
+	
+	@NotNull
 	private String pass;
 	private String userNm;
 	private String alias;
