@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import kr.or.ddit.exception.NoFileException;
 import kr.or.ddit.mvc.model.Main;
@@ -210,5 +212,35 @@ public class SpringMvcController {
 		resource.getInputStream();
 		
 		return "mvc/view";
+	}
+	
+	@RequestMapping("jsonView")
+	public String jsonView(Model model) {
+		List<String> rangers = new ArrayList<String>();
+		rangers.add("brown");
+		rangers.add("cony");
+		rangers.add("sally");
+		
+		model.addAttribute("rangers", rangers);
+		
+		return "jsonView";
+	}
+	
+	@RequestMapping("jsonView2")
+	public View jsonView2(Model model) {
+		List<String> rangers = new ArrayList<String>();
+		rangers.add("brown");
+		rangers.add("cony");
+		rangers.add("sally");
+		
+		model.addAttribute("rangers", rangers);
+
+		return new MappingJackson2JsonView();
+	}
+	
+	@RequestMapping("fileDownloadView")
+	public String fileDownloadView(String pictureName, Model model) {
+		model.addAttribute("pictureName", pictureName);
+		return "fileDownloadView";
 	}
 }
