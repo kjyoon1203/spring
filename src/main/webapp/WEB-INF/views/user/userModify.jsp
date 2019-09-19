@@ -65,7 +65,7 @@ $(function(){
 
 
             <form id = "frm" class="form-horizontal" role="form"
-            		action="${cp }/userModify" method="post"
+            		action="${cp }/user/userModify" method="post"
             		enctype="multipart/form-data">
 
 	            <input type="hidden" id="filename" name="filename" value = "${user.filename }"/>
@@ -93,8 +93,8 @@ $(function(){
                <div class="form-group">
                   <label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
                   <div class="col-sm-10">
-                     <input type="text" class="form-control" id="userNM" name="userNM"
-								placeholder="사용자 이름" value="${user.userNM }">
+                     <input type="text" class="form-control" id="userNm" name="userNm"
+								placeholder="사용자 이름" value="${user.userNm }">
                   </div>
                </div>
                <div class="form-group">

@@ -39,7 +39,7 @@
   
   <insert id="insertUser" parameterType="user">
   	insert into users(userId, userNm, pass, reg_dt, alias, addr1, addr2, zipcode, filename, realfilename)
-	values(#{userId}, #{userNm}, #{pass}, #{reg_dt}, #{alias}, #{addr1}, #{addr2}, #{zipcode}, #{filename}, #{realfilename})
+	values(#{userId}, #{userNm}, #{pass}, #{reg_dt}, #{alias}, #{addr1}, #{addr2}, #{zipcode}, #{filename, jdbcType=VARCHAR}, #{realfilename, jdbcType=VARCHAR})
   </insert>
   
   <!-- 사용자 삭제 -->
@@ -57,8 +57,8 @@
 			addr1 = #{addr1},
 			addr2 = #{addr2},
 			zipcode = #{zipcode},
-			filename = #{filename},
-			realfilename = #{realfilename}
+			filename = #{filename, jdbcType=VARCHAR},
+			realfilename = #{realfilename, jdbcType=VARCHAR}
 		where userId = #{userId}
 	</update>
 </mapper>

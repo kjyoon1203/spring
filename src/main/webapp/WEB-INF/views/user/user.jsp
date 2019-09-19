@@ -32,7 +32,7 @@ $(document).ready(function(){
 
 <body>
 	<!-- 가져간다  -->
-	<form id="frm" action="${cp}/userModify" method="get">
+	<form id="frm" action="${cp}/user/userModify" method="get">
        <input type="hidden" id="userId" name="userId" value = "${user.userId }"/>
     </form>
 	
@@ -55,7 +55,7 @@ $(document).ready(function(){
 						<div class="col-sm-10">
 							<label class="control-label">
 								<%-- <img src="/jsp${user.realfilename2}"/> --%>
-								<img src="${cp }/userPicture?userId=${user.userId}"/>
+								<img src="${cp }/user/userPicture?userId=${user.userId}"/>
 							</label>
 						</div>
 					</div>
@@ -71,7 +71,7 @@ $(document).ready(function(){
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
-							<label class="control-label">${user.userNM }</label>
+							<label class="control-label">${user.userNm }</label>
 						</div>
 					</div>
 					<div class="form-group">
