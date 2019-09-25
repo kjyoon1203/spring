@@ -3,7 +3,6 @@ package kr.or.ddit.user.web;
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.fileUpload;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -17,15 +16,14 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.ddit.config.test.WebTestConfig;
-import kr.or.ddit.user.model.User;
 
 public class UserControllerTest extends WebTestConfig{
 
 	/**
-	* Method : userListTest
-	* 작성자 : PC-08
-	* 변경이력 :
-	* Method 설명 : 사용자 전체 리스트 조회 테스트
+	 * Method : userListTest
+	 * 작성자 : PC-08
+	 * 변경이력 :
+	 * Method 설명 : 사용자 전체 리스트 조회 테스트
 	 * @throws Exception 
 	 */
 	@Test
